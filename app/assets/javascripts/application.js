@@ -16,5 +16,10 @@
 //= require d3.min
 //= heart
 //= require bubble
+//= require three
+//= require OBJMTLLoader
+//= require TrackballControls
+//= require Detector
+//= require heart.js
 //= require_tree .
 //= require_self
