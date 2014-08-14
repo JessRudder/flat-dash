@@ -14,9 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require d3.min
+//= require three
 //= heart
 //= require bubble
-//= require three
 //= require OBJMTLLoader
 //= require TrackballControls
 //= require Detector
