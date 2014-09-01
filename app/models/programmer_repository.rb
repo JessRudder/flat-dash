@@ -1,4 +1,7 @@
 class StudentRepository < ActiveRecord::Base
+  belongs_to :programmer
+  belongs_to :repository
+  
   attr_reader :client
 
   def self.client
