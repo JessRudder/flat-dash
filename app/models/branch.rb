@@ -1,4 +1,8 @@
-class StudentRepository < ActiveRecord::Base
+class Branch < ActiveRecord::Base
+  belongs_to :programmer
+  belongs_to :repository
+  has_many :commits
+  
   attr_reader :client
 
   def self.client

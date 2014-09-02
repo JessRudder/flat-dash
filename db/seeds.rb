@@ -5,12 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-flatiron = Company.create(name: "Flatiron School")
-
-ruby = Program.create(name: "Ruby 005", company_id: 1)
-ios = Program.create(name: "iOS 001", company_id: 1)
-
 jess = Student.create(name: "Jessica Rudder", username: "JessRudder", program_id: 1)
 denine = Student.create(name: "Denine Guy", username: "denineguy", program_id: 1)
 christina = Student.create(name: "Christina Leuci", username: "christinaleuci", program_id: 1)

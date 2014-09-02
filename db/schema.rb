@@ -11,78 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811191509) do
+ActiveRecord::Schema.define(version: 20140809184541) do
+
+  create_table "branches", force: true do |t|
+    t.text    "name"
+    t.integer "programmer_id"
+    t.integer "repository_id"
+  end
+
+  add_index "branches", ["programmer_id"], name: "index_branches_on_programmer_id"
+  add_index "branches", ["repository_id"], name: "index_branches_on_repository_id"
 
   create_table "commits", force: true do |t|
-    t.string   "name"
-    t.string   "user_login"
     t.text     "commit_message"
     t.datetime "commit_created_at"
+    t.integer  "branch_id"
+    t.integer  "programmer_id"
+    t.integer  "repository_id"
   end
 
-  create_table "companies", force: true do |t|
-    t.string   "name"
+  add_index "commits", ["branch_id"], name: "index_commits_on_branch_id"
+  add_index "commits", ["programmer_id"], name: "index_commits_on_programmer_id"
+  add_index "commits", ["repository_id"], name: "index_commits_on_repository_id"
+
+  create_table "programmers", force: true do |t|
+    t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "programs", force: true do |t|
-    t.string   "name"
-    t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "programs", ["company_id"], name: "index_programs_on_company_id"
-
-  create_table "projects", force: true do |t|
-    t.string   "name"
-    t.integer  "program_id"
-    t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "projects", ["company_id"], name: "index_projects_on_company_id"
-  add_index "projects", ["program_id"], name: "index_projects_on_program_id"
-
-  create_table "repositories", force: true do |t|
-    t.string   "repo_name"
-    t.string   "repo_full_name"
-    t.string   "user_login"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "pull_requests", force: true do |t|
     t.datetime "pull_created_at"
     t.datetime "pull_updated_at"
-  end
-
-  add_index "repositories", ["user_login"], name: "index_repositories_on_user_login"
-
-  create_table "student_project", force: true do |t|
-    t.integer  "student_id"
-    t.integer  "project_id"
+    t.integer  "programmer_id"
+    t.integer  "repository_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "student_project", ["project_id"], name: "index_student_project_on_project_id"
-  add_index "student_project", ["student_id"], name: "index_student_project_on_student_id"
+  add_index "pull_requests", ["programmer_id"], name: "index_pull_requests_on_programmer_id"
+  add_index "pull_requests", ["repository_id"], name: "index_pull_requests_on_repository_id"
 
-  create_table "student_repositories", force: true do |t|
-    t.string   "student_repo_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "branch"
+  create_table "repositories", force: true do |t|
+    t.string "name"
   end
-
-  create_table "students", force: true do |t|
-    t.string   "username"
-    t.string   "name"
-    t.integer  "program_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "students", ["program_id"], name: "index_students_on_program_id"
 
 end

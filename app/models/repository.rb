@@ -1,5 +1,7 @@
-
 class Repository < ActiveRecord::Base
+  has_many :branches
+  has_many :commits
+
   attr_reader :client
 
   def self.client

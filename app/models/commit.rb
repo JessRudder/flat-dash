@@ -1,4 +1,8 @@
 class Commit < ActiveRecord::Base
+  belongs_to :branch
+  belongs_to :programmer
+  belongs_to :repository
+
   attr_reader :client
 
   def self.client
