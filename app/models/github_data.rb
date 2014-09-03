@@ -21,7 +21,7 @@ class GithubData < ActiveRecord::Base
     get_repos.each do |repo|
       self.client.pull_requests(repo).each do |pull|
         programmer = Programmer.find_or_create_by(name: pull.user.login)
-        repository = Repository.find_or_create_by(name: pull.base.repo.name, programmer_id: programmer.id)
+        repository = Repository.find_or_create_by(name: pull.base.repo.name)
         PullRequest.find_or_create_by(pull_created_at: pull.created_at, pull_updated_at: pull.updated_at, programmer_id: programmer.id, repository_id: repository.id)
       end
     end
