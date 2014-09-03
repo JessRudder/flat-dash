@@ -6,14 +6,9 @@ class Branch < ActiveRecord::Base
   attr_reader :client
 
   def self.client
-    client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'], auto_traversal: true)
-    client.auto_paginate = true
-    client
+    GithubClient.client
   end
-
-  def client
-    self.class.client
-  end
+  
   # this method creates the full name of the repos, may get rid of 
   def self.construct_names
     repository_array = []

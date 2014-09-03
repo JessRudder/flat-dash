@@ -6,13 +6,7 @@ class Commit < ActiveRecord::Base
   attr_reader :client
 
   def self.client
-    client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'], auto_traversal: true)
-    client.auto_paginate = true
-    client
-  end
-
-  def client
-    self.class.client
+    GithubClient.client
   end
 
   def self.student_repos
