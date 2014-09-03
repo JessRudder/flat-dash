@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140809184541) do
   add_index "commits", ["repository_id"], name: "index_commits_on_repository_id"
 
   create_table "programmers", force: true do |t|
-    t.string   "username"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,7 +53,10 @@ ActiveRecord::Schema.define(version: 20140809184541) do
   add_index "pull_requests", ["repository_id"], name: "index_pull_requests_on_repository_id"
 
   create_table "repositories", force: true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "programmer_id"
   end
+
+  add_index "repositories", ["programmer_id"], name: "index_repositories_on_programmer_id"
 
 end
