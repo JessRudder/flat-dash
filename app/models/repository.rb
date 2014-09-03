@@ -5,7 +5,7 @@ class Repository < ActiveRecord::Base
   attr_reader :client
 
   def self.client
-    GithubClient.client
+    GithubData.client
   end
 
   def self.get_repos

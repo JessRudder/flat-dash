@@ -6,9 +6,9 @@ class Branch < ActiveRecord::Base
   attr_reader :client
 
   def self.client
-    GithubClient.client
+    GithubData.client
   end
-  
+
   # this method creates the full name of the repos, may get rid of 
   def self.construct_names
     repository_array = []
