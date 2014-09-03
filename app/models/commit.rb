@@ -10,7 +10,7 @@ class Commit < ActiveRecord::Base
   end
 
   def self.student_repos
-    StudentRepository.select(:student_repo_name, :branch).to_a.map(&:serializable_hash)
+    Repository.select(:student_repo_name, :branch).to_a.map(&:serializable_hash)
   end
 
   #This methods finds all of the commits for each repository and saves it to the database
