@@ -23,7 +23,7 @@ class Branch < ActiveRecord::Base
     repository_array
   end
 
-  #  # method to check if repository exists
+  # method to check if repository exists
   def self.repo_exists?(repo)
     GithubData.client.repository?(repo)
   end

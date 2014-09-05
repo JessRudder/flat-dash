@@ -3,7 +3,7 @@ class GithubData < ActiveRecord::Base
   attr_reader :client
 
   def self.client
-    client = Octokit::Client.new(access_token: '66d769dc61eb46a4cbb031e6f7500f521e99ebc1', auto_traversal: true)
+    client = Octokit::Client.new(access_token: ENV[:GITHUB_TOKEN], auto_traversal: true)
     client.auto_paginate = true
     client
   end
