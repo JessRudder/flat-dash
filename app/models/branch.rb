@@ -14,31 +14,27 @@ class Branch < ActiveRecord::Base
     repository_array = []
     Programmer.all.each do |prog|
       prog.repositories.each do |repo|
-        repository_array << "#{prog.name}/#{repo.name}"
+        if repo_exists?(repo)
+          repository_array << ["#{prog.name}/#{repo.name}", prog.id, repo.id]
+        end
       end
     end
+    puts repository_array
     repository_array
   end
 
   #  # method to check if repository exists
-  # def self.student_repos
-  #   repo_array = []
-  #   repo_total = make_repo_full_names.length
-  #   make_repo_full_names.each_with_index do |repo_name, i|
-  #     if client.repository?(repo_name)
-  #       repo_array << repo_name
-  #     end
-  #   end
-  #   repo_array
-  # end
+  def self.repo_exists?(repo)
+    GithubData.client.repository?(repo)
+  end
 
   def self.make_branches 
-    student_repos.each do |repo_name|
-      branch_name = client.branches(repo_name)
+    make_repo_full_names.each do |repo|
+      branch_name = GithubData.client.branches(repo[0])
       if branch_name.length > 1 
-        find_or_create_by(student_repo_name: repo_name, branch: branch_name.last.name)
+        find_or_create_by(name: branch_name.last.name, programmer_id: repo[1] , repository_id: repo[2] )
       else 
-        find_or_create_by(student_repo_name: repo_name, branch: branch_name.last.name)
+        # find_or_create_by(student_repo_name: repo_name, branch: branch_name.last.name)
       end
     end  
   end  
