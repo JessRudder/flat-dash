@@ -12,14 +12,14 @@ class Branch < ActiveRecord::Base
   # this method creates the full name of the repos, may get rid of 
   def self.make_repo_full_names
     repository_array = []
-    Programmer.all.each do |prog|
+    Programmer.includes(:repositories).all.each do |prog|
       prog.repositories.each do |repo|
         if repo_exists?(repo)
           repository_array << ["#{prog.name}/#{repo.name}", prog.id, repo.id]
         end
+      # repository_array << ["#{prog.name}/#{repo.name}", prog.id, repo.id]
       end
     end
-    puts repository_array
     repository_array
   end
 
