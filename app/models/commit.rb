@@ -3,26 +3,26 @@ class Commit < ActiveRecord::Base
   belongs_to :programmer
   belongs_to :repository
 
-  attr_reader :client
+  # attr_reader :client
 
-  def self.client
-    GithubData.client
-  end
+  # def self.client
+  #   GithubData.client
+  # end
 
-  def self.student_repos
-    Repository.select(:student_repo_name, :branch).to_a.map(&:serializable_hash)
-  end
+  # def self.student_repos
+  #   Repository.select(:student_repo_name, :branch).to_a.map(&:serializable_hash)
+  # end
 
-  #This methods finds all of the commits for each repository and saves it to the database
-  def self.make_commit_list
-    student_repos.collect do |student|
-      client.commits(student["student_repo_name"], student["branch"]).each do |commit_list|
-        if commit_list.author
-          find_or_create_by(user_login: commit_list.author.login, name: commit_list.commit.author.name, commit_message: commit_list.commit.message, commit_created_at: commit_list.commit.committer.date)
-        end
-      end
-    end
-  end
+  # #This methods finds all of the commits for each repository and saves it to the database
+  # def self.make_commit_list
+  #   student_repos.collect do |student|
+  #     client.commits(student["student_repo_name"], student["branch"]).each do |commit_list|
+  #       if commit_list.author
+  #         find_or_create_by(user_login: commit_list.author.login, name: commit_list.commit.author.name, commit_message: commit_list.commit.message, commit_created_at: commit_list.commit.committer.date)
+  #       end
+  #     end
+  #   end
+  # end
 
   #This method finds the top 10 users the highest commit count
   def self.top_commits_by_user

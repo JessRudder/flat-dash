@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809184541) do
+ActiveRecord::Schema.define(version: 20140905142218) do
 
   create_table "branches", force: true do |t|
     t.text    "name"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20140809184541) do
   add_index "commits", ["branch_id"], name: "index_commits_on_branch_id"
   add_index "commits", ["programmer_id"], name: "index_commits_on_programmer_id"
   add_index "commits", ["repository_id"], name: "index_commits_on_repository_id"
+
+  create_table "programmer_repositories", force: true do |t|
+    t.integer  "programmer_id"
+    t.integer  "repository_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "programmer_repositories", ["programmer_id"], name: "index_programmer_repositories_on_programmer_id"
+  add_index "programmer_repositories", ["repository_id"], name: "index_programmer_repositories_on_repository_id"
 
   create_table "programmers", force: true do |t|
     t.string   "name"

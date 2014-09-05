@@ -1,6 +1,8 @@
 class Repository < ActiveRecord::Base
   has_many :branches
   has_many :commits
+  has_many :programmer_repositories
+  has_many :programmers, through: :programmer_repositories
 
   attr_reader :client
 

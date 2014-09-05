@@ -12,7 +12,7 @@ class Branch < ActiveRecord::Base
   # this method creates the full name of the repos, may get rid of 
   def self.construct_names
     repository_array = []
-    student_repos = Repository.select(:user_login, :repo_name).to_a.map(&:serializable_hash)
+    student_repos = Repository.select(:user_id, :name).to_a.map(&:serializable_hash)
     student_repos.each do |student|
        repository_array << student["user_login"]+"/"+student["repo_name"]
     end
