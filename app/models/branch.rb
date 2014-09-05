@@ -10,29 +10,29 @@ class Branch < ActiveRecord::Base
   end
 
   # this method creates the full name of the repos, may get rid of 
-  def self.construct_names
+  def self.make_repo_full_names
     repository_array = []
-    student_repos = Repository.select(:user_id, :name).to_a.map(&:serializable_hash)
-    student_repos.each do |student|
-       repository_array << student["user_login"]+"/"+student["repo_name"]
+    Programmer.all.each do |prog|
+      prog.repositories.each do |repo|
+        repository_array << "#{prog.name}/#{repo.name}"
+      end
     end
     repository_array
   end
 
-   # method to check if repository exists
-  def self.student_repos
-    repo_array = []
-    repo_total = construct_names.length
-    construct_names.each_with_index do |repo_name, i|
-      if client.repository?(repo_name)
-        repo_array << repo_name
-      end
-    end
-    repo_array
-  end
+  #  # method to check if repository exists
+  # def self.student_repos
+  #   repo_array = []
+  #   repo_total = make_repo_full_names.length
+  #   make_repo_full_names.each_with_index do |repo_name, i|
+  #     if client.repository?(repo_name)
+  #       repo_array << repo_name
+  #     end
+  #   end
+  #   repo_array
+  # end
 
-  def self.branches 
-    new_array = []
+  def self.make_branches 
     student_repos.each do |repo_name|
       branch_name = client.branches(repo_name)
       if branch_name.length > 1 
