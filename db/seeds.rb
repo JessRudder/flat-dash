@@ -1,10 +1,3 @@
-
-#   create_table "branches", force: true do |t|
-#     t.text    "name"
-#     t.integer "programmer_id"
-#     t.integer "repository_id"
-#   end
-
 #   create_table "commits", force: true do |t|
 #     t.text     "commit_message"
 #     t.datetime "commit_created_at"
@@ -12,24 +5,6 @@
 #     t.integer  "programmer_id"
 #     t.integer  "repository_id"
 #   end
-
-#   create_table "programmer_repositories", force: true do |t|
-#     t.integer  "programmer_id"
-#     t.integer  "repository_id"
-#     t.datetime "created_at"
-#     t.datetime "updated_at"
-#   end
-
-#   create_table "pull_requests", force: true do |t|
-#     t.datetime "pull_created_at"
-#     t.datetime "pull_updated_at"
-#     t.integer  "programmer_id"
-#     t.integer  "repository_id"
-#     t.datetime "created_at"
-#     t.datetime "updated_at"
-#   end
-
-# end
 
 
 natalie = Programmer.create(name: "natalieparellano")
@@ -111,3 +86,66 @@ pr58 = ProgrammerRepository.create(programmer_id: 12, repository_id: 2)
 pr59 = ProgrammerRepository.create(programmer_id: 12, repository_id: 3)
 pr60 = ProgrammerRepository.create(programmer_id: 12, repository_id: 4)
 pr61 = ProgrammerRepository.create(programmer_id: 12, repository_id: 5)
+
+pull1 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 1)
+pull2 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 2)
+pull3 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 3)
+pull4 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 4)
+pull5 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 5)
+pull6 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 2, repository_id: 1)
+pull7 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 2, repository_id: 2)
+pull8 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 2, repository_id: 3)
+pull9 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 2, repository_id: 4)
+pull10 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 2, repository_id: 5)
+pull11 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 3, repository_id: 1)
+pull12 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 3, repository_id: 2)
+pull13 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 3, repository_id: 3)
+pull14 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 4, repository_id: 1)
+pull15 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 4, repository_id: 2)
+pull16 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 4, repository_id: 3)
+pull17 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 5, repository_id: 1)
+pull18 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 5, repository_id: 2)
+pull19 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 5, repository_id: 3)
+pull20 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 6, repository_id: 1)
+pull21 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 7, repository_id: 1)
+pull22 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 7, repository_id: 2)
+pull23 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 7, repository_id: 3)
+pull24 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 8, repository_id: 1)
+pull25 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 8, repository_id: 2)
+pull26 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 9, repository_id: 1)
+pull27 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 10, repository_id: 1)
+pull28 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 11, repository_id: 1)
+pull29 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 12, repository_id: 1)
+pull30 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 12, repository_id: 2)
+pull31 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 12, repository_id: 3)
+
+branch1 = Branch.create(name: "rake-todo-ruby-004", programmer_id: 1, repository_id: 1)
+branch2 = Branch.create(name: "git-todo-ruby-005", programmer_id: 1, repository_id: 2)
+branch3 = Branch.create(name: "clmystery-ruby-005", programmer_id: 1, repository_id: 3)
+branch4 = Branch.create(name: "todo-ruby-basics-ruby-005", programmer_id: 1, repository_id: 4)
+branch5 = Branch.create(name: "ruby-vowels-ruby-005", programmer_id: 1, repository_id: 5)
+branch6 = Branch.create(name: "rake-todo-ruby-004", programmer_id: 2, repository_id: 1)
+branch7 = Branch.create(name: "git-todo-ruby-005", programmer_id: 2, repository_id: 2)
+branch8 = Branch.create(name: "clmystery-ruby-005", programmer_id: 3, repository_id: 3)
+branch9 = Branch.create(name: "todo-ruby-basics-ruby-005", programmer_id: 3, repository_id: 4)
+branch10 = Branch.create(name: "ruby-vowels-ruby-005", programmer_id: 3, repository_id: 5)
+branch11 = Branch.create(name: "rake-todo-ruby-004", programmer_id: 4, repository_id: 1)
+branch12 = Branch.create(name: "git-todo-ruby-005", programmer_id: 4, repository_id: 2)
+branch13 = Branch.create(name: "clmystery-ruby-005", programmer_id: 5, repository_id: 3)
+branch14 = Branch.create(name: "todo-ruby-basics-ruby-005", programmer_id: 6, repository_id: 4)
+branch15 = Branch.create(name: "ruby-vowels-ruby-005", programmer_id: 6, repository_id: 5)
+branch16 = Branch.create(name: "rake-todo-ruby-004", programmer_id: 7, repository_id: 1)
+branch17 = Branch.create(name: "git-todo-ruby-005", programmer_id: 7, repository_id: 2)
+branch18 = Branch.create(name: "clmystery-ruby-005", programmer_id: 8, repository_id: 3)
+branch19 = Branch.create(name: "todo-ruby-basics-ruby-005", programmer_id: 8, repository_id: 4)
+branch20 = Branch.create(name: "ruby-vowels-ruby-005", programmer_id: 8, repository_id: 5)
+branch21 = Branch.create(name: "rake-todo-ruby-004", programmer_id: 9, repository_id: 1)
+branch22 = Branch.create(name: "git-todo-ruby-005", programmer_id: 9, repository_id: 2)
+branch23 = Branch.create(name: "clmystery-ruby-005", programmer_id: 9, repository_id: 3)
+branch24 = Branch.create(name: "todo-ruby-basics-ruby-005", programmer_id: 10, repository_id: 4)
+branch25 = Branch.create(name: "ruby-vowels-ruby-005", programmer_id: 10, repository_id: 5)
+branch26 = Branch.create(name: "rake-todo-ruby-004", programmer_id: 11, repository_id: 1)
+branch27 = Branch.create(name: "git-todo-ruby-005", programmer_id: 11, repository_id: 2)
+branch28 = Branch.create(name: "clmystery-ruby-005", programmer_id: 12, repository_id: 3)
+branch29 = Branch.create(name: "todo-ruby-basics-ruby-005", programmer_id: 12, repository_id: 4)
+branch30 = Branch.create(name: "ruby-vowels-ruby-005", programmer_id: 12, repository_id: 5)
