@@ -1,12 +1,3 @@
-#   create_table "commits", force: true do |t|
-#     t.text     "commit_message"
-#     t.datetime "commit_created_at"
-#     t.integer  "branch_id"
-#     t.integer  "programmer_id"
-#     t.integer  "repository_id"
-#   end
-
-
 natalie = Programmer.create(name: "natalieparellano")
 peter = Programmer.create(name: "pcrglennon")
 will = Programmer.create(name: "wlowry88")
@@ -149,3 +140,19 @@ branch27 = Branch.create(name: "git-todo-ruby-005", programmer_id: 11, repositor
 branch28 = Branch.create(name: "clmystery-ruby-005", programmer_id: 12, repository_id: 3)
 branch29 = Branch.create(name: "todo-ruby-basics-ruby-005", programmer_id: 12, repository_id: 4)
 branch30 = Branch.create(name: "ruby-vowels-ruby-005", programmer_id: 12, repository_id: 5)
+
+commit1 = Commit.create(commit_message: "got it done", commit_created_at: "2014-09-04 19:08:28", branch_id: 1)
+commit2 = Commit.create(commit_message: "finished", commit_created_at: "2014-09-04 19:08:27", branch_id: 2)
+commit3 = Commit.create(commit_message: "adds some important stuff", commit_created_at: "2014-09-04 19:08:22", branch_id: 5)
+commit4 = Commit.create(commit_message: "I'm so frustrated", commit_created_at: "2014-09-04 17:08:28", branch_id: 8)
+commit5 = Commit.create(commit_message: "Updates db table", commit_created_at: "2014-09-04 16:08:28", branch_id: 12)
+commit6 = Commit.create(commit_message: "I think it works", commit_created_at: "2014-09-04 20:08:28", branch_id: 13)
+commit7 = Commit.create(commit_message: "done", commit_created_at: "2014-09-04 19:08:29", branch_id: 14)
+commit8 = Commit.create(commit_message: "still having trouble with EVERYTHING", commit_created_at: "2014-09-04 19:07:23", branch_id: 21)
+commit9 = Commit.create(commit_message: "created some critical classes", commit_created_at: "2014-09-04 19:06:28", branch_id: 22)
+commit10 = Commit.create(commit_message: "you wish you were as awesome as I am", commit_created_at: "2014-09-04 19:05:28", branch_id: 23)
+commit11 = Commit.create(commit_message: "So happy for built in meth", commit_created_at: "2014-09-04 19:10:28", branch_id: 24)
+commit12 = Commit.create(commit_message: "Look...it's done", commit_created_at: "2014-09-04 19:14:28", branch_id: 28)
+commit13 = Commit.create(commit_message: "done", commit_created_at: "2014-09-04 19:13:28", branch_id: 29)
+commit14 = Commit.create(commit_message: "Why won't this work????", commit_created_at: "2014-09-04 19:18:28", branch_id: 30)
+commit15 = Commit.create(commit_message: "Please work...", commit_created_at: "2014-09-04 12:18:28", branch_id: 11)
