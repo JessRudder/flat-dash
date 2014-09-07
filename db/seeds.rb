@@ -1,14 +1,65 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-jess = Student.create(name: "Jessica Rudder", username: "JessRudder", program_id: 1)
-denine = Student.create(name: "Denine Guy", username: "denineguy", program_id: 1)
-christina = Student.create(name: "Christina Leuci", username: "christinaleuci", program_id: 1)
-joe = Student.create(name: "Joe Burgess", username: "joestheman", program_id: 2)
+
+#   create_table "branches", force: true do |t|
+#     t.text    "name"
+#     t.integer "programmer_id"
+#     t.integer "repository_id"
+#   end
+
+#   create_table "commits", force: true do |t|
+#     t.text     "commit_message"
+#     t.datetime "commit_created_at"
+#     t.integer  "branch_id"
+#     t.integer  "programmer_id"
+#     t.integer  "repository_id"
+#   end
+
+#   create_table "programmer_repositories", force: true do |t|
+#     t.integer  "programmer_id"
+#     t.integer  "repository_id"
+#     t.datetime "created_at"
+#     t.datetime "updated_at"
+#   end
+
+#   create_table "programmers", force: true do |t|
+#     t.string   "name"
+#     t.datetime "created_at"
+#     t.datetime "updated_at"
+#   end
+
+#   create_table "pull_requests", force: true do |t|
+#     t.datetime "pull_created_at"
+#     t.datetime "pull_updated_at"
+#     t.integer  "programmer_id"
+#     t.integer  "repository_id"
+#     t.datetime "created_at"
+#     t.datetime "updated_at"
+#   end
+
+#   create_table "repositories", force: true do |t|
+#     t.string "name"
+#   end
+
+# end
+
+
+natalie = Programmer.create(name: "natalieparellano")
+peter = Programmer.create(name: "pcrglennon")
+will = Programmer.create(name: "wlowry88")
+ben = Programmer.create(name: "kamoh")
+brandon = Programmer.create(name: "brandon")
+avi = Programmer.create(name: "aviflombaum")
+jess = Programmer.create(name: "jessrudder")
+josh = Programmer.create(name: "joshrudder")
+catherine = Programmer.create(name: "ccmeyers7")
+denine = Programmer.create(name: "denineguy")
+christina = Programmer.create(name: "christinaleuci")
+joe = Programmer.create(name: "joestheman")
+
+repo1 = Repository.create(name: "rake-todo-ruby-004")
+repo2 = Repository.create(name: "git-todo-ruby-005")
+repo3 = Repository.create(name: "clmystery-ruby-005")
+repo4 = Repository.create(name: "todo-ruby-basics-ruby-005")
+repo4 = Repository.create(name: "ruby-vowels-ruby-005")
 
 flatdash = Project.create(name: "Flat Dash", program_id: 1, company_id: 1)
 sillyiosthing = Project.create(name: "Silly iOS Thing", program_id: 2, company_id: 1)

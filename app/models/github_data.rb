@@ -3,10 +3,18 @@ class GithubData < ActiveRecord::Base
   attr_reader :client
 
   def self.client
-    client = Octokit::Client.new(access_token: ENV[:GITHUB_TOKEN], auto_traversal: true)
+    client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'], auto_traversal: true)
     client.auto_paginate = true
     client
   end
+
+  # def self.client
+  #   client = Octokit::Client.new \
+  #     :client_id     => ENV['GITHUB_CLIENT_ID'],
+  #     :client_secret => ENV['GITHUB_SECRET']
+  #   user = client.user 'JessRudder'
+  # end
+
 
   def self.get_repos
     repos = self.client.org_repos("flatiron-school-students")

@@ -4,6 +4,9 @@ class Branch < ActiveRecord::Base
   has_many :commits
   
   attr_reader :client
+  attr_accessor :repo_list
+
+  @@repo_list = []
 
   def self.client
     GithubData.client
@@ -14,13 +17,14 @@ class Branch < ActiveRecord::Base
     repository_array = []
     Programmer.includes(:repositories).all.each do |prog|
       prog.repositories.each do |repo|
-        if repo_exists?(repo)
-          repository_array << ["#{prog.name}/#{repo.name}", prog.id, repo.id]
+        repo_full_name = "#{prog.name}/#{repo.name}"
+        if repo_exists?(repo_full_name)
+          repository_array << [repo_full_name, prog.id, repo.id]
         end
       # repository_array << ["#{prog.name}/#{repo.name}", prog.id, repo.id]
       end
     end
-    repository_array
+    @@repo_list = repository_array
   end
 
   # method to check if repository exists
