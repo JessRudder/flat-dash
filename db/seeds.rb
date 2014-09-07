@@ -78,7 +78,7 @@ pr59 = ProgrammerRepository.create(programmer_id: 12, repository_id: 3)
 pr60 = ProgrammerRepository.create(programmer_id: 12, repository_id: 4)
 pr61 = ProgrammerRepository.create(programmer_id: 12, repository_id: 5)
 
-pull1 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 1)
+pull1 = PullRequest.create(pull_created_at: Date.today, pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 1)
 pull2 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 2)
 pull3 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 3)
 pull4 = PullRequest.create(pull_created_at: "2014-09-04 23:17:16", pull_updated_at: "2014-09-05 19:08:28", programmer_id: 1, repository_id: 4)
