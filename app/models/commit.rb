@@ -1,7 +1,7 @@
 class Commit < ActiveRecord::Base
   belongs_to :branch
-  belongs_to :programmer
-  belongs_to :repository
+  has_one :programmer, through: :branch
+  has_one :repository, through: :branch
 
   # attr_reader :client
 
