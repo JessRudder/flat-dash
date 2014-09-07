@@ -26,13 +26,9 @@ ActiveRecord::Schema.define(version: 20140905142218) do
     t.text     "commit_message"
     t.datetime "commit_created_at"
     t.integer  "branch_id"
-    t.integer  "programmer_id"
-    t.integer  "repository_id"
   end
 
   add_index "commits", ["branch_id"], name: "index_commits_on_branch_id"
-  add_index "commits", ["programmer_id"], name: "index_commits_on_programmer_id"
-  add_index "commits", ["repository_id"], name: "index_commits_on_repository_id"
 
   create_table "programmer_repositories", force: true do |t|
     t.integer  "programmer_id"

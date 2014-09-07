@@ -1,6 +1,6 @@
 class Repository < ActiveRecord::Base
   has_many :branches
-  has_many :commits
+  has_many :commits, through: :branches
   has_many :programmer_repositories
   has_many :programmers, through: :programmer_repositories
 
