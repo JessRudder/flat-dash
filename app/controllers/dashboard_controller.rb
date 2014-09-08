@@ -1,4 +1,4 @@
-class DataScrapeController < ApplicationController
+class DashboardController < ApplicationController
   protect_from_forgery except: :solari_data
   def index
     def solari_pull_semester
