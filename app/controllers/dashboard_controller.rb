@@ -2,25 +2,19 @@ class DashboardController < ApplicationController
   protect_from_forgery except: :solari_data
   def index
     def solari_pull_semester
-      json = PullRequest.top_pull_requests().to_json
-
-      render json: json, callback: params[:callback]
+      json_for_pulls("top_pull_requests")
     end
   end
 
   def week
     def solari_pull_week
-      json = PullRequest.this_week_pull_requests().to_json
-
-      render json: json, callback: params[:callback]
+      json_for_pulls("this_week_pull_requests")
     end
   end
 
   def day
     def todays_pull_requests
-      json = PullRequest.todays_pull_requests().to_json
-
-      render json: json, callback: params[:callback]
+      json_for_pulls("todays_pull_requests")
     end
   end
 
@@ -46,6 +40,13 @@ class DashboardController < ApplicationController
 
       render json: json, callback: params[:callback]
     end
+  end
+
+  private
+  def json_for_pulls(time_frame)
+    json = eval("PullRequest.#{time_frame}().to_json")
+
+    render json: json, callback: params[:callback]
   end
 
 end
