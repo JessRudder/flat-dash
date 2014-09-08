@@ -1,17 +1,17 @@
 class DataScrapeController < ApplicationController
   protect_from_forgery except: :solari_data
   def index
-      def solari_pull_semester
-        json = PullRequest.top_pull_requests().to_json
+    def solari_pull_semester
+      json = PullRequest.top_pull_requests().to_json
 
-        render json: json, callback: params[:callback]
-      end
+      render json: json, callback: params[:callback]
+    end
   end
 
   def week
     def solari_pull_week
-      
-      json = PullRequest.week_ago_pull_requests().to_json
+      json = PullRequest.this_week_pull_requests().to_json
+
       render json: json, callback: params[:callback]
     end
   end
