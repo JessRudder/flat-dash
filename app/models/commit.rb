@@ -19,11 +19,10 @@ class Commit < ActiveRecord::Base
 
   #This method find the lastest commits by user and shows their commit message
   def self.latest_commit_messages
-    commit_user = Commit.group(:branch_id).select(:id).order("commit_created_at DESC").limit(15).maximum(:commit_created_at)
+    recent_commits = Commit.joins(:programmer).order("commit_created_at DESC").limit(15)
     commit_array = []
-    commit_user.each do |user,date|
-       messages = Commit.where("commit_created_at >= ?", date).find_by "programmer_id = ?", user
-       commit_array << ({:sDate => date.strftime("%F"), :sTime =>date.strftime("%R"), :sUsername => messages.programmer.name, :sCommitMessage => messages.commit_message, :sTimeFrame => "EVERYONE"})
+    recent_commits.each do |commit|
+       commit_array << ({:sDate => commit.commit_created_at.strftime("%F"), :sTime =>commit.commit_created_at.strftime("%R"), :sUsername => commit.programmer.name, :sCommitMessage => commit.commit_message, :sTimeFrame => "EVERYONE"})
     end
     commit_array
   end
