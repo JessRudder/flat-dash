@@ -3,49 +3,37 @@ class Commit < ActiveRecord::Base
   has_one :programmer, through: :branch
   has_one :repository, through: :branch
 
-  # attr_reader :client
-
-  # def self.client
-  #   GithubData.client
-  # end
-
-  # def self.student_repos
-  #   Repository.select(:student_repo_name, :branch).to_a.map(&:serializable_hash)
-  # end
-
-  # #This methods finds all of the commits for each repository and saves it to the database
-  # def self.make_commit_list
-  #   student_repos.collect do |student|
-  #     client.commits(student["student_repo_name"], student["branch"]).each do |commit_list|
-  #       if commit_list.author
-  #         find_or_create_by(programmer_id: commit_list.author.login, name: commit_list.commit.author.name, commit_message: commit_list.commit.message, commit_created_at: commit_list.commit.committer.date)
-  #       end
-  #     end
-  #   end
-  # end
-
   #This method finds the top 10 users the highest commit count
   def self.top_commits_by_user
+
+    # Potentially useful code
     commit_array = []
-    Commit.order("commit_created_at DESC").maximum(:commit_message)
-    commit_dates = Commit.group(:programmer_id).order("commit_created_at DESC").maximum(:commit_created_at)
-    top_user_commits = Commit.group(:programmer_id).order("count_all DESC").calculate(:count, :all)
+    commit_dates = Commit.joins(:programmer).group("programmers.name").order("commit_created_at DESC").maximum(:commit_created_at)
+    top_user_commits = Commit.joins(:programmer).group("programmers.name").order("count_all DESC").calculate(:count, :all)
     users = top_user_commits.keys
     count = top_user_commits.values
-    last_commit = commit_dates  
+    last_commit = commit_dates
     users.each_with_index do |user, i|
-      commit_array << ({:sDate => last_commit[user].strftime("%F"), :sTime => last_commit[user].strftime("%R"), :sUsername => "@"+ user, :sTimeFrame => "week", :nCommits => count[i]})
+    # commit_array = []
+    # Commit.order("commit_created_at DESC").maximum(:commit_message)
+    # commit_dates = Commit.group(:programmer_id).order("commit_created_at DESC").maximum(:commit_created_at)
+    # top_user_commits = Commit.group(:programmer_id).order("count_all DESC").calculate(:count, :all)
+    # users = top_user_commits.keys
+    # count = top_user_commits.values
+    # last_commit = commit_dates  
+    # users.each_with_index do |user, i|
+      commit_array << ({:sDate => last_commit[user].strftime("%F"), :sTime => last_commit[user].strftime("%R"), :sUsername => user, :sTimeFrame => "week", :nCommits => count[i]})
     end
     commit_array
   end
 
   #This method find the lastest commits by user and shows their commit message
   def self.latest_commit_messages
-    commit_user = Commit.group(:programmer_id).select(:id).order("commit_created_at DESC").limit(15).maximum(:commit_created_at)
+     hhgghcommit_user = Commit.group(:branch_id).select(:id).order("commit_created_at DESC").limit(15).maximum(:commit_created_at)
     commit_array = []
     commit_user.each do |user,date|
        messages = Commit.where("commit_created_at >= ?", date).find_by "programmer_id = ?", user
-       commit_array << ({:sDate => date.strftime("%F"), :sTime =>date.strftime("%R"), :sUsername => messages.programmer_id, :sCommitMessage => messages.commit_message, :sTimeFrame => "EVERYONE"})
+       commit_array << ({:sDate => date.strftime("%F"), :sTime =>date.strftime("%R"), :sUsername => messages.programmer.name, :sCommitMessage => messages.commit_message, :sTimeFrame => "EVERYONE"})
     end
     commit_array
   end
@@ -53,7 +41,7 @@ class Commit < ActiveRecord::Base
   # This method picks one user at a time and shows their last 10 commit messages
   def self.user_commits
     commit_array = []
-    programmer_ids = Commit.pluck(:programmer_id).uniq 
+    programmer_ids = Commit.join(:programmer).pluck(programmer.name).uniq 
     login = programmer_ids.sample
     messages = Commit.where("programmer_id = ?", login).order("commit_created_at DESC").select(:programmer_id, :commit_message, :commit_created_at).limit(15)
     messages.each do |message|
