@@ -30,11 +30,10 @@ class Commit < ActiveRecord::Base
   # This method picks one user at a time and shows their last 10 commit messages
   def self.user_commits
     commit_array = []
-    programmer_ids = Commit.join(:programmer).pluck(programmer.name).uniq 
-    login = programmer_ids.sample
-    messages = Commit.where("programmer_id = ?", login).order("commit_created_at DESC").select(:programmer_id, :commit_message, :commit_created_at).limit(15)
+    login = Commit.joins(:programmer).pluck("programmers.name").uniq.sample
+    messages = Commit.joins(:programmer).where("programmers.name = ?", login).order("commit_created_at DESC").select(:id, :commit_message, :commit_created_at).limit(15)
     messages.each do |message|
-      commit_array << ({:sDate => message.commit_created_at.strftime("%F"), :sTime =>message.commit_created_at.strftime("%R"),:sUsername => message.programmer_id, :sCommitMessage => message.commit_message, :sTimeFrame => message.programmer_id})
+      commit_array << ({:sDate => message.commit_created_at.strftime("%F"), :sTime =>message.commit_created_at.strftime("%R"),:sUsername => message.programmer.name, :sCommitMessage => message.commit_message, :sTimeFrame => message.id})
     end
     commit_array
   end
